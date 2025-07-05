@@ -10,7 +10,8 @@
     "preview": "vite preview",
     "lint:fix": "eslint . --ext ts,tsx --fix",
     "format": "prettier --write \"src/**/*.{ts,tsx,js,jsx}\"",
-    "format:check": "prettier --check \"src/**/*.{ts,tsx,js,jsx}\""
+    "format:check": "prettier --check \"src/**/*.{ts,tsx,js,jsx}\"",
+    "prepare": "husky"
   },
   "dependencies": {
     "@emotion/react": "^11.14.0",
@@ -33,9 +34,20 @@
     "eslint-plugin-react-hooks": "^5.2.0",
     "eslint-plugin-react-refresh": "^0.4.20",
     "globals": "^16.2.0",
+    "husky": "^9.1.7",
+    "lint-staged": "^16.1.2",
     "prettier": "^3.6.2",
     "typescript": "~5.8.3",
     "typescript-eslint": "^8.34.1",
     "vite": "^7.0.0"
+  },
+  "lint-staged": {
+    "*.{ts,tsx,js,jsx}": [
+      "eslint --fix",
+      "prettier --write"
+    ],
+    "*.{json,md,css,scss}": [
+      "prettier --write"
+    ]
   }
 }
