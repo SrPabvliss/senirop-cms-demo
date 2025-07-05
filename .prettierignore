@@ -1,0 +1,38 @@
+# Ignore artifacts:
+build
+coverage
+
+# Dependencies
+node_modules
+
+# Build outputs
+dist
+dist-ssr
+
+# Environment files
+.env
+.env.*
+
+# Logs
+*.log
+
+# Testing
+test-results
+playwright-report
+
+# Generated files
+*.min.js
+*.min.css
+
+# IDE files
+.vscode
+.idea
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Package manager
+pnpm-lock.yaml
+yarn.lock
+package-lock.json
