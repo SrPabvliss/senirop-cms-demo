@@ -2,7 +2,7 @@ import type {
   IArticle,
   ICreateArticle,
   IUpdateArticle,
-} from '@/features/articles/data/interfaces/article.interface'
+} from '@/features/articles/data/types/article.interface'
 
 /**
  * Interface for the article store

@@ -3,7 +3,7 @@ import {
   type ImportFunction,
   ImportEntity,
 } from '../../../../core/helpers/import.helper'
-import type { IArticle } from '../interfaces/article.interface'
+import type { IArticle } from '../types/article.interface'
 
 /**
  * Service to get articles from the JSON file
