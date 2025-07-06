@@ -36,7 +36,7 @@ export const STYLES = {
       padding: {
         horizontal: 45,
         vertical: 38,
-        logoTop: 67,
+        logoTop: 38,
       },
     },
   },
