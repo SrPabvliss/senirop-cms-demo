@@ -1,0 +1,26 @@
+[
+  {
+    "id": "1",
+    "headline": "Production Article 1",
+    "body": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+    "author": "Juan Pablo",
+    "publicationDate": "2025-01-01",
+    "published": true
+  },
+  {
+    "id": "2",
+    "headline": "Production Article 2",
+    "body": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+    "author": "Juan Pablo",
+    "publicationDate": "2025-01-01",
+    "published": true
+  },
+  {
+    "id": "3",
+    "headline": "Production Article 3",
+    "body": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+    "author": "Juan Pablo",
+    "publicationDate": "2025-01-01",
+    "published": true
+  }
+]

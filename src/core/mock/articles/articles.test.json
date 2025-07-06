@@ -1,0 +1,42 @@
+[
+  {
+    "id": "1",
+    "headline": "Test Article 1",
+    "body": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+    "author": "Juan Pablo",
+    "publicationDate": "2025-01-01",
+    "published": true
+  },
+  {
+    "id": "2",
+    "headline": "Test Article 2",
+    "body": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+    "author": "Juan Pablo",
+    "publicationDate": "2025-01-01",
+    "published": true
+  },
+  {
+    "id": "3",
+    "headline": "Test Article 3",
+    "body": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+    "author": "Juan Pablo",
+    "publicationDate": "2025-01-01",
+    "published": true
+  },
+  {
+    "id": "4",
+    "headline": "Test Article 4",
+    "body": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+    "author": "Juan Pablo",
+    "publicationDate": "2025-01-01",
+    "published": true
+  },
+  {
+    "id": "5",
+    "headline": "Test Article 5",
+    "body": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+    "author": "Juan Pablo",
+    "publicationDate": "2025-01-01",
+    "published": true
+  }
+]
