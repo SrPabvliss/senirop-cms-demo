@@ -4,9 +4,6 @@ import type {
   IUpdateArticle,
 } from '@/features/articles/data/types/article.interface'
 
-/**
- * Interface for the article store
- */
 export interface IArticleStore {
   articles: IArticle[]
   init: () => Promise<void>
