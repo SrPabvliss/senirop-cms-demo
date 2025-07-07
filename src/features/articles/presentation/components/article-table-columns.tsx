@@ -8,7 +8,7 @@ import type { IArticle } from '@/features/articles/data/types/article.interface'
  * it will allow me to send specific functions for article actions
  */
 interface ArticleTableHandlers {
-  onTogglePublished: (id: string) => void
+  onTogglePublished: (article: IArticle) => void
   onOpenActions: (article: IArticle) => void
 }
 
@@ -52,7 +52,7 @@ export const createArticleColumns = ({
         onChange={(e) => {
           // stop the event of the row click
           e.stopPropagation()
-          onTogglePublished(row.id)
+          onTogglePublished(row)
         }}
         size="small"
         sx={{

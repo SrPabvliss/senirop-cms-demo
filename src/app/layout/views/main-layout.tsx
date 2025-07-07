@@ -17,7 +17,6 @@ export const MainLayout = () => {
           bgcolor: theme.palette.background.default,
           minHeight: '100vh',
           marginLeft: `${theme.layout.sidebar.width}px`,
-          p: 3,
         }}
       >
         <Outlet />
