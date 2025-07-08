@@ -30,7 +30,7 @@ export function DataTable<T extends BaseDataRow>({
   } = useDataTablePagination(data)
 
   return (
-    <TableContainer component={Paper}>
+    <TableContainer component={Paper} className="">
       <Table>
         <DataTableHead columns={columns} />
 

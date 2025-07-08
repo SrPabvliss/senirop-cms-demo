@@ -22,5 +22,5 @@ export const ArticlesProvider = ({ children }: ArticlesProviderProps) => {
     return <LoadingListSkeleton />
   }
 
-  return <>{children(articles)}</>
+  return <>{children(articles || [])}</>
 }

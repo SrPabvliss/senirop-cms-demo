@@ -5,9 +5,9 @@ export interface ArticleActions {
   handleTogglePublished: (article: IArticle) => void
   handleAddArticle: () => void
   handleRowClick: (article: IArticle) => void
-  handleOpenActions: (article: IArticle) => void
   handleEditArticle: (article: IArticle) => void
-  handleDeleteArticle: (id: string) => void
+  handleViewArticle: (article: IArticle) => void
+  handleDeleteArticle: (article: IArticle) => void
 }
 
 export interface ArticleFilters {

@@ -9,7 +9,7 @@ export interface BaseDataRow {
  * Generic column configuration for the data table
  */
 export interface Column<T> {
-  key: keyof T | string
+  key: keyof T | 'actions'
   label: string
   width?: number | string
   align?: 'left' | 'center' | 'right'

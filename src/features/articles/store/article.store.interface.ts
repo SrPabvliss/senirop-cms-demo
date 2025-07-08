@@ -5,7 +5,7 @@ import type {
 } from '@/features/articles/data/types/article.interface'
 
 export interface IArticleStore {
-  articles: IArticle[]
+  articles: IArticle[] | undefined
   init: () => Promise<void>
   setArticles: (articles: IArticle[]) => void
   addArticle: (article: ICreateArticle) => void

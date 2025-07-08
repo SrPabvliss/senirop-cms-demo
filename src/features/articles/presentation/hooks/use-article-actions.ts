@@ -8,32 +8,33 @@ export const useArticleActions = () => {
   const { updateArticle, addArticle, deleteArticle } = useArticleStore()
 
   const handleTogglePublished = (article: IArticle) => {
-    if (article) updateArticle(article.id, { published: !article.published })
+    if (article) {
+      updateArticle(article.id, { published: !article.published })
+    }
   }
 
   const handleRowClick = (article: IArticle) => {
-    console.log('Row clicked:', article)
-    // TODO: Abrir aside para ver artículo
-  }
-
-  const handleOpenActions = (article: IArticle) => {
-    console.log('Actions clicked:', article)
-    // TODO: Abrir menú de acciones (edit, delete, etc.)
+    console.log('Row clicked - View article:', article)
+    // TODO: Abrir aside para ver artículo (ver artículo)
   }
 
   const handleAddArticle = () => {
     console.log('Add article clicked')
-    // TODO: Abrir aside para crear artículo
+    // TODO: Abrir aside para crear artículo (crear artículo)
   }
 
   const handleEditArticle = (article: IArticle) => {
-    console.log('Edit article:', article)
-    // TODO: Abrir aside en modo edición
+    console.log('Edit article from menu:', article)
+    // TODO: Abrir aside en modo edición (editar artículo)
   }
 
-  const handleDeleteArticle = (id: string) => {
-    // TODO: Mostrar confirmación antes de eliminar
-    deleteArticle(id)
+  const handleViewArticle = (article: IArticle) => {
+    console.log('View article from menu:', article)
+    // TODO: Abrir aside en modo vista (ver artículo)
+  }
+
+  const handleDeleteArticle = (article: IArticle) => {
+    deleteArticle(article.id)
   }
 
   const handleCreateArticle = (articleData: Omit<IArticle, 'id'>) => {
@@ -46,13 +47,12 @@ export const useArticleActions = () => {
     // TODO: Cerrar aside, mostrar mensaje de éxito
   }
 
-  // Return object that matches interface exactly
   return {
     handleTogglePublished,
     handleAddArticle,
     handleRowClick,
-    handleOpenActions,
     handleEditArticle,
+    handleViewArticle,
     handleDeleteArticle,
     handleCreateArticle,
     handleUpdateArticle,

@@ -29,7 +29,9 @@ export const ArticlesListView = ({
 
   const columns = createArticleColumns({
     onTogglePublished: actions.handleTogglePublished,
-    onOpenActions: actions.handleOpenActions,
+    onEdit: actions.handleEditArticle,
+    onView: actions.handleViewArticle,
+    onDelete: actions.handleDeleteArticle,
   })
 
   return (

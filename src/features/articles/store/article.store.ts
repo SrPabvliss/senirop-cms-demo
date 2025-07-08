@@ -15,14 +15,14 @@ const STORE_NAME = `article-store-${import.meta.env.MODE}`
 export const useArticleStore = create<IArticleStore>()(
   persist(
     (set, get) => ({
-      articles: [],
+      articles: undefined,
       isLoading: false,
       /**
        * Initialize the store, if the articles are not in the store, get them from the service
        */
       init: async () => {
         set({ isLoading: true })
-        if (get().articles.length === 0) {
+        if (get().articles === undefined) {
           const articles = await ArticlesService.getInstance().getArticles()
           set({ articles })
         }
@@ -34,18 +34,19 @@ export const useArticleStore = create<IArticleStore>()(
        */
       addArticle: (article) => {
         set((state) => ({
-          articles: [...state.articles, { ...article, id: uuidv4() }],
+          articles: [...(state.articles || []), { ...article, id: uuidv4() }],
         }))
       },
       updateArticle: (id, article) =>
         set((state) => ({
-          articles: state.articles.map((a) =>
-            a.id === id ? { ...a, ...article } : a
-          ),
+          articles:
+            state.articles?.map((a) =>
+              a.id === id ? { ...a, ...article } : a
+            ) || [],
         })),
       deleteArticle: (id) =>
         set((state) => ({
-          articles: state.articles.filter((a) => a.id !== id),
+          articles: state.articles?.filter((a) => a.id !== id) || [],
         })),
     }),
     {
