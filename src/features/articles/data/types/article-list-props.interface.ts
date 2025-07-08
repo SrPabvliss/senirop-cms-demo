@@ -1,5 +1,11 @@
 import type { IArticle } from '@/features/articles/data/types/article.interface'
 import type { ArticleStatus } from '../constants/article-statuses'
+import type { FormMode } from '@/shared/constants/form-modes'
+
+export interface UseArticleActionsProps {
+  openDrawer: (mode: FormMode, article?: IArticle) => void
+  closeDrawer: () => void
+}
 
 export interface ArticleActions {
   handleTogglePublished: (article: IArticle) => void

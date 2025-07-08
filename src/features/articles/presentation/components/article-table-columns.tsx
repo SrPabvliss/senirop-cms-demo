@@ -52,10 +52,12 @@ export const createArticleColumns = ({
     render: (value, row) => (
       <Switch
         checked={value}
-        onChange={(e) => {
-          // stop the event of the row click
-          e.stopPropagation()
+        onChange={(event) => {
+          event.stopPropagation()
           handleTogglePublished(row)
+        }}
+        onClick={(event) => {
+          event.stopPropagation()
         }}
         size="small"
         sx={{

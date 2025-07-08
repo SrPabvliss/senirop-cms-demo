@@ -19,17 +19,20 @@ export const useActionsMenu = (
     setTrigger(null)
   }
 
-  const handleEdit = (article: IArticle) => {
+  const handleEdit = (article: IArticle, event?: React.MouseEvent) => {
+    event?.stopPropagation()
     onEdit(article)
     handleClose()
   }
 
-  const handleView = (article: IArticle) => {
+  const handleView = (article: IArticle, event?: React.MouseEvent) => {
+    event?.stopPropagation()
     onView(article)
     handleClose()
   }
 
-  const handleDelete = (article: IArticle) => {
+  const handleDelete = (article: IArticle, event?: React.MouseEvent) => {
+    event?.stopPropagation()
     onDelete(article)
     handleClose()
   }

@@ -1,12 +1,10 @@
 import React from 'react'
-import { Drawer, Box, IconButton, Typography } from '@mui/material'
+import { Drawer, Box } from '@mui/material'
 import { useTheme } from '@mui/material/styles'
-import { Close } from '@mui/icons-material'
 
 interface FormDrawerProps {
   isOpen: boolean
   onClose: () => void
-  title: string
   children: React.ReactNode
 }
 
@@ -17,7 +15,6 @@ interface FormDrawerProps {
 export const FormDrawer: React.FC<FormDrawerProps> = ({
   isOpen,
   onClose,
-  title,
   children,
 }) => {
   const theme = useTheme()
@@ -41,46 +38,12 @@ export const FormDrawer: React.FC<FormDrawerProps> = ({
     >
       <Box
         sx={{
-          height: '100%',
-          display: 'flex',
-          flexDirection: 'column',
+          flex: 1,
+          overflow: 'hidden',
           padding: `${theme.layout.formDrawer.padding.main}px`,
         }}
       >
-        <Box
-          sx={{
-            display: 'flex',
-            justifyContent: 'space-between',
-            alignItems: 'center',
-            mb: 4,
-          }}
-        >
-          <Typography
-            variant="h6"
-            sx={{
-              fontSize: '20px',
-              fontWeight: 500,
-              color: theme.palette.text.primary,
-            }}
-          >
-            {title}
-          </Typography>
-
-          <IconButton
-            onClick={onClose}
-            size="small"
-            sx={{
-              color: theme.palette.text.secondary,
-              '&:hover': {
-                backgroundColor: 'rgba(0, 0, 0, 0.04)',
-              },
-            }}
-          >
-            <Close />
-          </IconButton>
-        </Box>
-
-        <Box sx={{ flex: 1, overflow: 'auto' }}>{children}</Box>
+        {children}
       </Box>
     </Drawer>
   )

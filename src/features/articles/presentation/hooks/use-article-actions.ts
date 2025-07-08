@@ -1,10 +1,15 @@
 import { useArticleStore } from '@/features/articles/store/article.store'
 import type { IArticle } from '@/features/articles/data/types/article.interface'
+import { FormMode } from '@/shared/constants/form-modes'
+import type { UseArticleActionsProps } from '../../data/types/article-list-props.interface'
 
 /**
  * Hook that provides all article-related actions
  */
-export const useArticleActions = () => {
+export const useArticleActions = ({
+  openDrawer,
+  closeDrawer,
+}: UseArticleActionsProps) => {
   const { updateArticle, addArticle, deleteArticle } = useArticleStore()
 
   const handleTogglePublished = (article: IArticle) => {
@@ -14,23 +19,19 @@ export const useArticleActions = () => {
   }
 
   const handleRowClick = (article: IArticle) => {
-    console.log('Row clicked - View article:', article)
-    // TODO: Abrir aside para ver artículo (ver artículo)
+    openDrawer(FormMode.VIEW, article)
   }
 
   const handleAddArticle = () => {
-    console.log('Add article clicked')
-    // TODO: Abrir aside para crear artículo (crear artículo)
+    openDrawer(FormMode.CREATE)
   }
 
   const handleEditArticle = (article: IArticle) => {
-    console.log('Edit article from menu:', article)
-    // TODO: Abrir aside en modo edición (editar artículo)
+    openDrawer(FormMode.EDIT, article)
   }
 
   const handleViewArticle = (article: IArticle) => {
-    console.log('View article from menu:', article)
-    // TODO: Abrir aside en modo vista (ver artículo)
+    openDrawer(FormMode.VIEW, article)
   }
 
   const handleDeleteArticle = (article: IArticle) => {
@@ -39,12 +40,14 @@ export const useArticleActions = () => {
 
   const handleCreateArticle = (articleData: Omit<IArticle, 'id'>) => {
     addArticle(articleData)
-    // TODO: Cerrar aside, mostrar mensaje de éxito
+    closeDrawer()
+    // TODO: show success message
   }
 
   const handleUpdateArticle = (id: string, articleData: Partial<IArticle>) => {
     updateArticle(id, articleData)
-    // TODO: Cerrar aside, mostrar mensaje de éxito
+    closeDrawer()
+    // TODO: show success message
   }
 
   return {

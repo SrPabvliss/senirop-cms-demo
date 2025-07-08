@@ -7,38 +7,37 @@ import type { ArticleFormProps } from '../../data/types/article-form.interface'
 import RHFInput from '@/shared/ui/components/form/rhf-inputt'
 import RHFDateInput from '@/shared/ui/components/form/rhf-date-input'
 import RHFSwitch from '@/shared/ui/components/form/rhf-switch'
+import { Close } from '@mui/icons-material'
 
-export const ArticleForm = ({ mode, article }: ArticleFormProps) => {
+export const ArticleForm = ({
+  mode,
+  article,
+  onClose,
+}: ArticleFormProps & { onClose: () => void }) => {
   const theme = useTheme()
   const isReadOnly = mode === FormMode.VIEW
 
-  const {
-    methods,
-    onSubmit,
-    isSubmitting,
-    isValid,
-    getButtonText,
-    handleCancel,
-    getTitle,
-  } = useArticleForm({ mode, article })
+  const { methods, onSubmit, isSubmitting, isValid, getButtonText, getTitle } =
+    useArticleForm({ mode, article, onClose })
 
   return (
     <FormProvider {...methods}>
       <Box>
         <Button
-          variant="outlined"
-          onClick={handleCancel}
+          variant="text"
+          onClick={onClose}
           disabled={isSubmitting}
           sx={{
             display: 'flex',
             justifySelf: 'flex-end',
             textTransform: 'none',
-            borderColor: '#E5E5E5',
-            color: theme.palette.text.secondary,
+            color: theme.palette.info.main,
             marginBottom: '16px',
+            gap: '8px',
           }}
         >
-          Close
+          <Close />
+          <Typography variant="body1">CLOSE</Typography>
         </Button>
         <Box>
           <Typography variant="h6" sx={{ mb: 2 }}>

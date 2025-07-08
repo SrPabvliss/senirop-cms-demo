@@ -83,14 +83,14 @@ export const ArticleActionsMenu = ({
           },
         }}
       >
-        <MenuItem onClick={() => handleEdit(article)}>
+        <MenuItem onClick={(event) => handleEdit(article, event)}>
           <ListItemIcon>
             <Edit fontSize="small" />
           </ListItemIcon>
           <ListItemText>Edit</ListItemText>
         </MenuItem>
 
-        <MenuItem onClick={() => handleView(article)}>
+        <MenuItem onClick={(event) => handleView(article, event)}>
           <ListItemIcon>
             <Visibility fontSize="small" />
           </ListItemIcon>
@@ -100,7 +100,7 @@ export const ArticleActionsMenu = ({
         <Divider />
 
         <MenuItem
-          onClick={() => handleDelete(article)}
+          onClick={(event) => handleDelete(article, event)}
           sx={{
             color: 'error.main',
             '& .MuiListItemIcon-root': {

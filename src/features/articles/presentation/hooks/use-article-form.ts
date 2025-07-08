@@ -18,9 +18,14 @@ import type { UseArticleFormProps } from '../../data/types/article-form.interfac
  * Hook to manage the article form
  * @param mode - The mode of the form (create, edit, view)
  * @param article - The article to edit
+ * @param onClose - Function to close the drawer
  * @returns The form methods, onSubmit, isSubmitting, isValid, getButtonText, getTitle, handleButtonClick, handleCancel
  */
-export function useArticleForm({ mode, article }: UseArticleFormProps) {
+export function useArticleForm({
+  mode,
+  article,
+  onClose,
+}: UseArticleFormProps & { onClose: () => void }) {
   const { addArticle, updateArticle } = useArticleStore()
   const { success } = useSnackbar()
 
@@ -51,11 +56,13 @@ export function useArticleForm({ mode, article }: UseArticleFormProps) {
     if (mode === FormMode.CREATE) {
       addArticle(data)
       success('Article created successfully')
+      onClose()
       return
     }
-    if (mode === FormMode.EDIT && article) {
+    if ((mode === FormMode.EDIT || mode === FormMode.VIEW) && article) {
       updateArticle(article.id, data)
       success('Article updated successfully')
+      onClose()
     }
   }
 
@@ -75,7 +82,6 @@ export function useArticleForm({ mode, article }: UseArticleFormProps) {
   const getTitle = () => getFormTitle(mode, article)
 
   const handleButtonClick = () => {
-    if (mode === FormMode.VIEW) return
     handleSubmit(onSubmit)()
   }
 
@@ -94,5 +100,6 @@ export function useArticleForm({ mode, article }: UseArticleFormProps) {
     getTitle,
     handleButtonClick,
     handleCancel,
+    onClose,
   }
 }
