@@ -55,6 +55,10 @@ export const ArticleActionsMenu = ({
         <MoreVert />
       </IconButton>
 
+      {/* 
+        trigger + anchorEL allow me to open the menu in the same position of the trigger
+        docs: https://mui.com/material-ui/api/menu/#props
+      */}
       <Menu
         id="article-actions-menu"
         anchorEl={trigger}

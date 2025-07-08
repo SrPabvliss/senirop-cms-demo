@@ -17,6 +17,11 @@ export const STYLES = {
       primary: '#111827',
       secondary: '#6b7280',
     },
+    formDrawer: {
+      background: '#FFFFFF',
+      border: '#E5E5E5',
+      shadow: 'rgba(0, 0, 0, 0.25)',
+    },
   },
   typography: {
     fontFamily: 'Roboto, Arial, sans-serif',
@@ -25,6 +30,7 @@ export const STYLES = {
     },
     weights: {
       normal: 400,
+      medium: 500,
       bold: 700,
     },
   },
@@ -37,6 +43,19 @@ export const STYLES = {
         horizontal: 45,
         vertical: 38,
         logoTop: 38,
+      },
+    },
+    formDrawer: {
+      width: 548,
+      borderRadius: 4,
+      padding: {
+        main: 32,
+      },
+      shadow: {
+        x: 0,
+        y: 4,
+        blur: 4,
+        spread: 0,
       },
     },
   },

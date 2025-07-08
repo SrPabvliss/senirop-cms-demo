@@ -27,12 +27,7 @@ export const ArticlesListView = ({
     setPublishedStatus,
   } = useArticleFilters(articles)
 
-  const columns = createArticleColumns({
-    onTogglePublished: actions.handleTogglePublished,
-    onEdit: actions.handleEditArticle,
-    onView: actions.handleViewArticle,
-    onDelete: actions.handleDeleteArticle,
-  })
+  const columns = createArticleColumns(actions)
 
   return (
     <>
@@ -106,7 +101,6 @@ export const ArticlesListView = ({
           </Button>
         </Box>
 
-        {/* Table */}
         <DataTable
           data={filteredArticles}
           columns={columns}

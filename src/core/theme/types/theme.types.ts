@@ -8,12 +8,22 @@ declare module '@mui/material/styles' {
       main: string
       logout: string
     }
+    formDrawer: {
+      background: string
+      border: string
+      shadow: string
+    }
   }
 
   interface PaletteOptions {
     sidebar?: {
       main?: string
       logout?: string
+    }
+    formDrawer?: {
+      background?: string
+      border?: string
+      shadow?: string
     }
   }
 
@@ -49,6 +59,19 @@ declare module '@mui/material/styles' {
           logoTop: number
         }
       }
+      formDrawer: {
+        width: number
+        borderRadius: number
+        padding: {
+          main: number
+        }
+        shadow: {
+          x: number
+          y: number
+          blur: number
+          spread: number
+        }
+      }
     }
   }
 
@@ -62,6 +85,19 @@ declare module '@mui/material/styles' {
           horizontal?: number
           vertical?: number
           logoTop?: number
+        }
+      }
+      formDrawer?: {
+        width?: number
+        borderRadius?: number
+        padding?: {
+          main?: number
+        }
+        shadow?: {
+          x?: number
+          y?: number
+          blur?: number
+          spread?: number
         }
       }
     }

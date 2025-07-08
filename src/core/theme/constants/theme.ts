@@ -23,6 +23,11 @@ export const theme = createTheme({
       secondary: STYLES.colors.text.secondary,
       sidebar: STYLES.colors.sidebar.text,
     },
+    formDrawer: {
+      background: STYLES.colors.formDrawer.background,
+      border: STYLES.colors.formDrawer.border,
+      shadow: STYLES.colors.formDrawer.shadow,
+    },
   },
   typography: {
     fontFamily: STYLES.typography.fontFamily,
@@ -34,5 +39,6 @@ export const theme = createTheme({
   },
   layout: {
     sidebar: STYLES.layout.sidebar,
+    formDrawer: STYLES.layout.formDrawer,
   },
 })

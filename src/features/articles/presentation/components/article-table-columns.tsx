@@ -8,20 +8,20 @@ import { ArticleActionsMenu } from './article-actions-menu'
  * Include specific action handlers
  */
 interface ArticleTableHandlers {
-  onTogglePublished: (article: IArticle) => void
-  onEdit: (article: IArticle) => void
-  onView: (article: IArticle) => void
-  onDelete: (article: IArticle) => void
+  handleTogglePublished: (article: IArticle) => void
+  handleEditArticle: (article: IArticle) => void
+  handleViewArticle: (article: IArticle) => void
+  handleDeleteArticle: (article: IArticle) => void
 }
 
 /**
  * This is the function that will create the columns for the article table
  */
 export const createArticleColumns = ({
-  onTogglePublished,
-  onEdit,
-  onView,
-  onDelete,
+  handleTogglePublished,
+  handleEditArticle,
+  handleViewArticle,
+  handleDeleteArticle,
 }: ArticleTableHandlers): Column<IArticle>[] => [
   {
     key: 'headline',
@@ -55,7 +55,7 @@ export const createArticleColumns = ({
         onChange={(e) => {
           // stop the event of the row click
           e.stopPropagation()
-          onTogglePublished(row)
+          handleTogglePublished(row)
         }}
         size="small"
         sx={{
@@ -78,9 +78,9 @@ export const createArticleColumns = ({
     render: (_, row) => (
       <ArticleActionsMenu
         article={row}
-        onEdit={onEdit}
-        onView={onView}
-        onDelete={onDelete}
+        onEdit={handleEditArticle}
+        onView={handleViewArticle}
+        onDelete={handleDeleteArticle}
       />
     ),
   },
