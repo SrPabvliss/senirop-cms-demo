@@ -46,4 +46,13 @@ export class ImportHelper {
 
     return importer as ImportFunction<T>
   }
+
+  /**
+   * Set the environment for the import helper
+   * @param environment - The environment to set
+   * Added to allow for testing
+   */
+  static setEnvironment(environment: string) {
+    this.environment = environment
+  }
 }
