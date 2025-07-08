@@ -1,6 +1,9 @@
 import { articleSchema } from '@/features/articles/data/schemas/article.schema'
 import { describe, expect, it } from 'vitest'
 
+/**
+ * Article schema should be tested as the ui control does not let the errors to be thrown/shown
+ */
 describe('Article Schema', () => {
   it('should return a valid article', () => {
     const article = articleSchema.parse({

@@ -9,6 +9,10 @@ import testArticles from '@mock/articles/articles.test.json'
 import developmentArticles from '@mock/articles/articles.development.json'
 import productionArticles from '@mock/articles/articles.production.json'
 
+/**
+ * Import helper should be tested as it is the base for the data import in the app
+ */
+
 describe('Import Helper', () => {
   it('should return a function that imports data', () => {
     const importer = ImportHelper.getImporter<IArticle[]>(ImportEntity.ARTICLES)
