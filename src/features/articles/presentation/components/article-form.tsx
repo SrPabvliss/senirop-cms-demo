@@ -13,12 +13,20 @@ export const ArticleForm = ({
   mode,
   article,
   onClose,
-}: ArticleFormProps & { onClose: () => void }) => {
+  onCreateArticle,
+  onUpdateArticle,
+}: ArticleFormProps) => {
   const theme = useTheme()
   const isReadOnly = mode === FormMode.VIEW
 
   const { methods, onSubmit, isSubmitting, isValid, getButtonText, getTitle } =
-    useArticleForm({ mode, article, onClose })
+    useArticleForm({
+      mode,
+      article,
+      onClose,
+      onCreateArticle,
+      onUpdateArticle,
+    })
 
   return (
     <FormProvider {...methods}>

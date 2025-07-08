@@ -1,7 +1,5 @@
 import { useForm, type SubmitHandler } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
-import { useArticleStore } from '@/features/articles/store/article.store'
-import { useSnackbar } from '@/shared/hooks/use-snackbar'
 import {
   articleSchema,
   type ArticleSchema,
@@ -19,16 +17,17 @@ import type { UseArticleFormProps } from '../../data/types/article-form.interfac
  * @param mode - The mode of the form (create, edit, view)
  * @param article - The article to edit
  * @param onClose - Function to close the drawer
+ * @param onCreateArticle - Function to create article
+ * @param onUpdateArticle - Function to update article
  * @returns The form methods, onSubmit, isSubmitting, isValid, getButtonText, getTitle, handleButtonClick, handleCancel
  */
 export function useArticleForm({
   mode,
   article,
   onClose,
-}: UseArticleFormProps & { onClose: () => void }) {
-  const { addArticle, updateArticle } = useArticleStore()
-  const { success } = useSnackbar()
-
+  onCreateArticle,
+  onUpdateArticle,
+}: UseArticleFormProps) {
   /**
    * Form methods to handle the form state
    * Uses ArticleSchema to validate the form data
@@ -53,16 +52,16 @@ export function useArticleForm({
    * @param data - The form data
    */
   const onSubmit: SubmitHandler<ArticleSchema> = async (data) => {
-    if (mode === FormMode.CREATE) {
-      addArticle(data)
-      success('Article created successfully')
-      onClose()
+    if (mode === FormMode.CREATE && onCreateArticle) {
+      onCreateArticle(data)
       return
     }
-    if ((mode === FormMode.EDIT || mode === FormMode.VIEW) && article) {
-      updateArticle(article.id, data)
-      success('Article updated successfully')
-      onClose()
+    if (
+      (mode === FormMode.EDIT || mode === FormMode.VIEW) &&
+      article &&
+      onUpdateArticle
+    ) {
+      onUpdateArticle(article.id, data)
     }
   }
 
@@ -72,9 +71,8 @@ export function useArticleForm({
    * @param published - The published status
    */
   const handleTogglePublished = (published: boolean) => {
-    if (!(mode === FormMode.VIEW && article)) return
-    updateArticle(article.id, { published })
-    success(`Article ${published ? 'published' : 'unpublished'} successfully`)
+    if (!(mode === FormMode.VIEW && article && onUpdateArticle)) return
+    onUpdateArticle(article.id, { published })
   }
 
   const getButtonText = () => getFormButtonText(mode)

@@ -9,12 +9,15 @@ import type { UseArticleActionsProps } from '../../data/types/article-list-props
 export const useArticleActions = ({
   openDrawer,
   closeDrawer,
+  success,
 }: UseArticleActionsProps) => {
   const { updateArticle, addArticle, deleteArticle } = useArticleStore()
 
   const handleTogglePublished = (article: IArticle) => {
     if (article) {
-      updateArticle(article.id, { published: !article.published })
+      const newStatus = !article.published
+      updateArticle(article.id, { published: newStatus })
+      success(`Article ${newStatus ? 'published' : 'unpublished'} successfully`)
     }
   }
 
@@ -36,18 +39,19 @@ export const useArticleActions = ({
 
   const handleDeleteArticle = (article: IArticle) => {
     deleteArticle(article.id)
+    success('Article deleted successfully')
   }
 
   const handleCreateArticle = (articleData: Omit<IArticle, 'id'>) => {
     addArticle(articleData)
+    success('Article created successfully')
     closeDrawer()
-    // TODO: show success message
   }
 
   const handleUpdateArticle = (id: string, articleData: Partial<IArticle>) => {
     updateArticle(id, articleData)
+    success('Article updated successfully')
     closeDrawer()
-    // TODO: show success message
   }
 
   return {

@@ -5,6 +5,7 @@ import type { FormMode } from '@/shared/constants/form-modes'
 export interface UseArticleActionsProps {
   openDrawer: (mode: FormMode, article?: IArticle) => void
   closeDrawer: () => void
+  success: (message: string) => void
 }
 
 export interface ArticleActions {

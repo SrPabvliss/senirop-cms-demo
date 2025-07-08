@@ -4,6 +4,8 @@ import { useArticleDrawer } from '../hooks/use-article-drawer'
 import { ArticlesListView } from '../views/article-list-view'
 import { FormDrawer } from '@/shared/ui/components/form/form-drawer'
 import { ArticleForm } from '../components/article-form'
+import { SnackbarComponent } from '@/shared/ui/components/snackbar'
+import { useSnackbar } from '@/shared/hooks/use-snackbar'
 
 /**
  * Provides the articles list to the ArticlesListView component
@@ -11,9 +13,11 @@ import { ArticleForm } from '../components/article-form'
  */
 export const ArticleListContainer = () => {
   const drawer = useArticleDrawer()
+  const { snackbarProps, success, close } = useSnackbar()
   const actions = useArticleActions({
     openDrawer: drawer.openDrawer,
     closeDrawer: drawer.closeDrawer,
+    success,
   })
 
   return (
@@ -26,11 +30,14 @@ export const ArticleListContainer = () => {
 
       <FormDrawer isOpen={drawer.isOpen} onClose={drawer.closeDrawer}>
         <ArticleForm
-          mode={drawer.mode}
-          article={drawer.article}
+          {...drawer}
           onClose={drawer.closeDrawer}
+          onCreateArticle={actions.handleCreateArticle}
+          onUpdateArticle={actions.handleUpdateArticle}
         />
       </FormDrawer>
+
+      <SnackbarComponent {...snackbarProps} onClose={close} />
     </>
   )
 }
