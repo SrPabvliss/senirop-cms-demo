@@ -6,6 +6,8 @@ import { FormDrawer } from '@/shared/ui/components/form/form-drawer'
 import { ArticleForm } from '../components/article-form'
 import { SnackbarComponent } from '@/shared/ui/components/snackbar'
 import { useSnackbar } from '@/shared/hooks/use-snackbar'
+import { useConfirmationDialog } from '@/shared/hooks/use-confirmation-dialog'
+import { ConfirmationDialog } from '@/shared/ui/components/confirmation-dialog'
 
 /**
  * Provides the articles list to the ArticlesListView component
@@ -13,11 +15,13 @@ import { useSnackbar } from '@/shared/hooks/use-snackbar'
  */
 export const ArticleListContainer = () => {
   const drawer = useArticleDrawer()
+  const confirmationDialog = useConfirmationDialog()
   const { snackbarProps, success, close } = useSnackbar()
   const actions = useArticleActions({
     openDrawer: drawer.openDrawer,
     closeDrawer: drawer.closeDrawer,
     success,
+    openConfirmationDialog: confirmationDialog.openDialog,
   })
 
   return (
@@ -38,6 +42,12 @@ export const ArticleListContainer = () => {
       </FormDrawer>
 
       <SnackbarComponent {...snackbarProps} onClose={close} />
+
+      <ConfirmationDialog
+        {...confirmationDialog}
+        onConfirm={confirmationDialog.handleConfirm}
+        onCancel={confirmationDialog.closeDialog}
+      />
     </>
   )
 }

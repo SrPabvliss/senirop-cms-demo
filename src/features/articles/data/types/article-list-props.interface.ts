@@ -6,6 +6,11 @@ export interface UseArticleActionsProps {
   openDrawer: (mode: FormMode, article?: IArticle) => void
   closeDrawer: () => void
   success: (message: string) => void
+  openConfirmationDialog: (
+    title: string,
+    message: string,
+    onConfirm: () => void
+  ) => void
 }
 
 export interface ArticleActions {

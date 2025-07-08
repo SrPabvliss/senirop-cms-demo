@@ -11,6 +11,7 @@ export const useArticleActions = ({
   openDrawer,
   closeDrawer,
   success,
+  openConfirmationDialog,
 }: UseArticleActionsProps) => {
   const { updateArticle, addArticle, deleteArticle } = useArticleStore()
 
@@ -43,8 +44,14 @@ export const useArticleActions = ({
   }
 
   const handleDeleteArticle = (article: IArticle) => {
-    deleteArticle(article.id)
-    success(ARTICLE_SNACKBAR_MESSAGES.DELETE)
+    openConfirmationDialog(
+      'Delete Article',
+      'Are you sure you want to delete this article?',
+      () => {
+        deleteArticle(article.id)
+        success(ARTICLE_SNACKBAR_MESSAGES.DELETE)
+      }
+    )
   }
 
   const handleCreateArticle = (articleData: Omit<IArticle, 'id'>) => {
