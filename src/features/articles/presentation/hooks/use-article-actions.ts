@@ -2,6 +2,7 @@ import { useArticleStore } from '@/features/articles/store/article.store'
 import type { IArticle } from '@/features/articles/data/types/article.interface'
 import { FormMode } from '@/shared/constants/form-modes'
 import type { UseArticleActionsProps } from '../../data/types/article-list-props.interface'
+import { ARTICLE_SNACKBAR_MESSAGES } from '../../data/constants/article-snackbar-messages'
 
 /**
  * Hook that provides all article-related actions
@@ -17,7 +18,11 @@ export const useArticleActions = ({
     if (article) {
       const newStatus = !article.published
       updateArticle(article.id, { published: newStatus })
-      success(`Article ${newStatus ? 'published' : 'unpublished'} successfully`)
+      success(
+        newStatus
+          ? ARTICLE_SNACKBAR_MESSAGES.PUBLISH
+          : ARTICLE_SNACKBAR_MESSAGES.UNPUBLISH
+      )
     }
   }
 
@@ -39,18 +44,18 @@ export const useArticleActions = ({
 
   const handleDeleteArticle = (article: IArticle) => {
     deleteArticle(article.id)
-    success('Article deleted successfully')
+    success(ARTICLE_SNACKBAR_MESSAGES.DELETE)
   }
 
   const handleCreateArticle = (articleData: Omit<IArticle, 'id'>) => {
     addArticle(articleData)
-    success('Article created successfully')
+    success(ARTICLE_SNACKBAR_MESSAGES.CREATE)
     closeDrawer()
   }
 
   const handleUpdateArticle = (id: string, articleData: Partial<IArticle>) => {
     updateArticle(id, articleData)
-    success('Article updated successfully')
+    success(ARTICLE_SNACKBAR_MESSAGES.UPDATE)
     closeDrawer()
   }
 
