@@ -1,4 +1,4 @@
-import { Switch } from '@mui/material'
+import { Switch, useTheme } from '@mui/material'
 import type { Column } from '@/shared/types/data-table.types'
 import type { IArticle } from '@/features/articles/data/types/article.interface'
 import { ArticleActionsMenu } from './article-actions-menu'
@@ -15,75 +15,83 @@ interface ArticleTableHandlers {
 }
 
 /**
- * This is the function that will create the columns for the article table
+ * This is the hook that will create the columns for the article table
  */
-export const createArticleColumns = ({
+export const useArticleColumns = ({
   handleTogglePublished,
   handleEditArticle,
   handleViewArticle,
   handleDeleteArticle,
-}: ArticleTableHandlers): Column<IArticle>[] => [
-  {
-    key: 'headline',
-    label: 'Article Headline',
-    width: '40%',
-  },
-  {
-    key: 'author',
-    label: 'Author',
-    width: '20%',
-  },
-  {
-    key: 'publicationDate',
-    label: 'Publish Date',
-    width: '15%',
-    render: (value) => {
-      const date = new Date(value)
-      return date.toLocaleDateString('en-US', {
-        timeZone: 'UTC',
-      })
+}: ArticleTableHandlers): Column<IArticle>[] => {
+  const theme = useTheme()
+
+  return [
+    {
+      key: 'headline',
+      label: 'Article Headline',
+      width: '40%',
     },
-  },
-  {
-    key: 'published',
-    label: 'Published',
-    width: '15%',
-    align: 'center' as const,
-    render: (value, row) => (
-      <Switch
-        checked={value}
-        onChange={(event) => {
-          event.stopPropagation()
-          handleTogglePublished(row)
-        }}
-        onClick={(event) => {
-          event.stopPropagation()
-        }}
-        size="small"
-        sx={{
-          '& .MuiSwitch-thumb': {
-            backgroundColor: `${value ? '#6DF491' : '#FFFFFF'}`,
-            border: `${value ? 'none' : '1px solid #8E8E8E'}`,
-          },
-          '& .MuiSwitch-track': {
-            backgroundColor: `${value ? '#6DF491' : '#8E8E8E'} !important`,
-          },
-        }}
-      />
-    ),
-  },
-  {
-    key: 'actions',
-    label: '',
-    width: '10%',
-    align: 'right' as const,
-    render: (_, row) => (
-      <ArticleActionsMenu
-        article={row}
-        onEdit={handleEditArticle}
-        onView={handleViewArticle}
-        onDelete={handleDeleteArticle}
-      />
-    ),
-  },
-]
+    {
+      key: 'author',
+      label: 'Author',
+      width: '20%',
+    },
+    {
+      key: 'publicationDate',
+      label: 'Publish Date',
+      width: '15%',
+      render: (value) => {
+        const date = new Date(value)
+        return date.toLocaleDateString('en-US', {
+          timeZone: 'UTC',
+        })
+      },
+    },
+    {
+      key: 'published',
+      label: 'Published',
+      width: '15%',
+      align: 'center' as const,
+      render: (value, row) => (
+        <Switch
+          checked={value}
+          onChange={(event) => {
+            event.stopPropagation()
+            handleTogglePublished(row)
+          }}
+          onClick={(event) => {
+            event.stopPropagation()
+          }}
+          size="small"
+          sx={{
+            '& .MuiSwitch-thumb': {
+              backgroundColor: value
+                ? theme.palette.switch.thumb.active
+                : theme.palette.switch.thumb.inactive,
+              border: value
+                ? 'none'
+                : `1px solid ${theme.palette.switch.thumb.border}`,
+            },
+            '& .MuiSwitch-track': {
+              backgroundColor: `${value ? theme.palette.switch.active : theme.palette.switch.inactive} !important`,
+            },
+          }}
+        />
+      ),
+    },
+    {
+      key: 'actions',
+      label: '',
+      width: '10%',
+      align: 'right' as const,
+      render: (_, row) => (
+        <ArticleActionsMenu
+          article={row}
+          onEdit={handleEditArticle}
+          onView={handleViewArticle}
+          onDelete={handleDeleteArticle}
+        />
+      ),
+    },
+  ]
+}

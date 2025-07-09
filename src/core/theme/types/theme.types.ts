@@ -13,6 +13,15 @@ declare module '@mui/material/styles' {
       border: string
       shadow: string
     }
+    switch: {
+      active: string
+      inactive: string
+      thumb: {
+        active: string
+        inactive: string
+        border: string
+      }
+    }
   }
 
   interface PaletteOptions {
@@ -24,6 +33,15 @@ declare module '@mui/material/styles' {
       background?: string
       border?: string
       shadow?: string
+    }
+    switch?: {
+      active?: string
+      inactive?: string
+      thumb?: {
+        active?: string
+        inactive?: string
+        border?: string
+      }
     }
   }
 

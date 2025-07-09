@@ -22,6 +22,15 @@ export const STYLES = {
       border: '#E5E5E5',
       shadow: 'rgba(0, 0, 0, 0.25)',
     },
+    switch: {
+      active: '#6DF491',
+      inactive: '#8E8E8E',
+      thumb: {
+        active: '#6DF491',
+        inactive: '#FFFFFF',
+        border: '#8E8E8E',
+      },
+    },
   },
   typography: {
     fontFamily: 'Roboto, Arial, sans-serif',

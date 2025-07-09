@@ -28,6 +28,15 @@ export const theme = createTheme({
       border: STYLES.colors.formDrawer.border,
       shadow: STYLES.colors.formDrawer.shadow,
     },
+    switch: {
+      active: STYLES.colors.switch.active,
+      inactive: STYLES.colors.switch.inactive,
+      thumb: {
+        active: STYLES.colors.switch.thumb.active,
+        inactive: STYLES.colors.switch.thumb.inactive,
+        border: STYLES.colors.switch.thumb.border,
+      },
+    },
   },
   typography: {
     fontFamily: STYLES.typography.fontFamily,

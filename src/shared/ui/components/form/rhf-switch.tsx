@@ -51,11 +51,15 @@ const RHFSwitch: React.FC<RHFSwitchProps> = ({
             disabled={disabled}
             sx={{
               '& .MuiSwitch-thumb': {
-                backgroundColor: field.value ? '#6DF491' : '#FFFFFF',
-                border: field.value ? 'none' : '1px solid #8E8E8E',
+                backgroundColor: field.value
+                  ? theme.palette.switch.thumb.active
+                  : theme.palette.switch.thumb.inactive,
+                border: field.value
+                  ? 'none'
+                  : `1px solid ${theme.palette.switch.thumb.border}`,
               },
               '& .MuiSwitch-track': {
-                backgroundColor: `${field.value ? '#6DF491' : '#8E8E8E'} !important`,
+                backgroundColor: `${field.value ? theme.palette.switch.active : theme.palette.switch.inactive} !important`,
               },
             }}
           />

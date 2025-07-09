@@ -8,7 +8,7 @@ import {
   FormControl,
 } from '@mui/material'
 import { Add } from '@mui/icons-material'
-import { createArticleColumns } from '../components/article-table-columns'
+import { useArticleColumns } from '../components/article-table-columns'
 import { DataTable } from '@/shared/ui/components/data-table'
 import type { ArticlesListViewProps } from '../../data/types/article-list-props.interface'
 import { useArticleFilters } from '../hooks/use-article-filters'
@@ -27,7 +27,7 @@ export const ArticlesListView = ({
     setPublishedStatus,
   } = useArticleFilters(articles)
 
-  const columns = createArticleColumns(actions)
+  const columns = useArticleColumns(actions)
 
   return (
     <>
