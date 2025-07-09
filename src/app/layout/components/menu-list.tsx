@@ -8,6 +8,7 @@ import {
 } from '@mui/material'
 import { Link } from 'react-router'
 import { useMenuNavigation } from '../hooks/use-menu-navigation'
+import logoUrl from '/images/senirop-logo.png?url'
 
 const MenuListComponent = () => {
   const theme = useTheme()
@@ -28,7 +29,7 @@ const MenuListComponent = () => {
           pt: `${theme.layout.sidebar.padding.logoTop}px`,
         }}
       >
-        <img src="/images/senirop-logo.png" alt="Senirop Logo" />
+        <img src={logoUrl} alt="Senirop Logo" />
       </Box>
       <List
         sx={{
