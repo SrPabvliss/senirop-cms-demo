@@ -6,9 +6,9 @@ import { TableCell, TableHead, TableRow } from '@mui/material'
  * it will render the header for the data table
  * docs: https://mui.com/material-ui/react-table/
  */
-export function DataTableHead<T>({ columns }: DataTableHeadProps<T>) {
+export function DataTableHead<T>({ columns, sx }: DataTableHeadProps<T>) {
   return (
-    <TableHead>
+    <TableHead sx={sx}>
       <TableRow>
         {columns.map((column) => (
           <TableCell

@@ -16,6 +16,7 @@ export function DataTableBody<T extends BaseDataRow>({
   loading,
   emptyMessage,
   onRowClick,
+  sx,
 }: DataTableBodyProps<T>) {
   const renderCellContent = (column: Column<T>, row: T, index: number) => {
     if (column.render) {
@@ -49,7 +50,7 @@ export function DataTableBody<T extends BaseDataRow>({
   }
 
   return (
-    <TableBody>
+    <TableBody sx={sx}>
       {data.map((row, index) => (
         <TableRow
           key={row.id}

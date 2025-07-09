@@ -20,6 +20,10 @@ export function DataTable<T extends BaseDataRow>({
   onRowClick,
   pagination = false,
   emptyMessage = 'No data available',
+  headerSx,
+  bodySx,
+  paginationSx,
+  sx,
 }: DataTableProps<T>) {
   const {
     page,
@@ -30,9 +34,9 @@ export function DataTable<T extends BaseDataRow>({
   } = useDataTablePagination(data)
 
   return (
-    <TableContainer component={Paper} className="">
+    <TableContainer component={Paper} sx={sx}>
       <Table>
-        <DataTableHead columns={columns} />
+        <DataTableHead columns={columns} sx={headerSx} />
 
         <DataTableBody
           data={paginatedData}
@@ -40,6 +44,7 @@ export function DataTable<T extends BaseDataRow>({
           loading={loading}
           emptyMessage={emptyMessage}
           onRowClick={onRowClick}
+          sx={bodySx}
         />
 
         {pagination && (
@@ -50,6 +55,7 @@ export function DataTable<T extends BaseDataRow>({
             page={page}
             onPageChange={onPageChange}
             onRowsPerPageChange={onRowsPerPageChange}
+            sx={paginationSx}
           />
         )}
       </Table>

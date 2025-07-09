@@ -12,6 +12,7 @@ export const SnackbarComponent = ({
   message,
   type,
   onClose,
+  sx,
 }: SnackBarComponentProps) => {
   /**
    * Handle the close event, prevent the close by click away
@@ -30,6 +31,7 @@ export const SnackbarComponent = ({
       autoHideDuration={1400}
       onClose={handleClose}
       anchorOrigin={{ vertical: 'bottom', horizontal: 'center' }}
+      sx={sx}
     >
       <Alert onClose={onClose} severity={type} variant="filled">
         {message}

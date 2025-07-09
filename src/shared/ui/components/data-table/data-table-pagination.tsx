@@ -13,9 +13,10 @@ export function DataTablePagination({
   page,
   onPageChange,
   onRowsPerPageChange,
+  sx,
 }: DataTablePaginationProps) {
   return (
-    <TableFooter>
+    <TableFooter sx={sx}>
       <TableRow>
         <TablePagination
           colSpan={colSpan}

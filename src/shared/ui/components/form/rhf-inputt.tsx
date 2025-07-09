@@ -1,7 +1,7 @@
 import React from 'react'
 import { useFormContext, Controller } from 'react-hook-form'
 import { TextField, Box, Typography } from '@mui/material'
-import { useTheme } from '@mui/material/styles'
+import { useTheme, type SxProps, type Theme } from '@mui/material/styles'
 import { rhfInputStyles } from '@/shared/constants/rhf-components-styles'
 
 interface RHFInputProps {
@@ -13,6 +13,7 @@ interface RHFInputProps {
   multiline?: boolean
   rows?: number
   required?: boolean
+  sx?: SxProps<Theme>
 }
 
 /**
@@ -35,6 +36,7 @@ const RHFInput: React.FC<RHFInputProps> = ({
   multiline = false,
   rows = 1,
   required = false,
+  sx,
 }) => {
   // use configured theme
   const theme = useTheme()
@@ -61,7 +63,7 @@ const RHFInput: React.FC<RHFInputProps> = ({
   }
 
   return (
-    <Box sx={{ mb: 3, width: '100%' }}>
+    <Box sx={{ mb: 3, width: '100%', ...sx }}>
       {label && (
         <Typography
           variant="body2"

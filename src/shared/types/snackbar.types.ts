@@ -1,3 +1,5 @@
+import type { SxProps, Theme } from '@mui/material'
+
 export type SnackbarType = 'success' | 'error' | 'warning' | 'info'
 
 export interface SnackbarState {
@@ -12,4 +14,5 @@ export interface SnackBarComponentProps {
   message: string
   type: SnackbarType
   onClose: () => void
+  sx?: SxProps<Theme>
 }

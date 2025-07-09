@@ -1,3 +1,5 @@
+import type { SxProps, Theme } from '@mui/material'
+
 export interface UseSearchInputOptions {
   value?: string
   debounceDelay?: number
@@ -10,4 +12,5 @@ export interface SearchInputProps extends UseSearchInputOptions {
   fullWidth?: boolean
   size?: 'small' | 'medium'
   variant?: 'outlined' | 'filled' | 'standard'
+  sx?: SxProps<Theme>
 }

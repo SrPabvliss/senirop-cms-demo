@@ -1,11 +1,12 @@
 import { Switch, Box, Typography } from '@mui/material'
-import { useTheme } from '@mui/material/styles'
+import { useTheme, type SxProps, type Theme } from '@mui/material/styles'
 import { useFormContext, Controller } from 'react-hook-form'
 
 interface RHFSwitchProps {
   name: string
   label?: string
   disabled?: boolean
+  sx?: SxProps<Theme>
 }
 
 /**
@@ -18,12 +19,13 @@ const RHFSwitch: React.FC<RHFSwitchProps> = ({
   name,
   label,
   disabled = false,
+  sx,
 }) => {
   const theme = useTheme()
   const { control } = useFormContext()
 
   return (
-    <Box sx={{ mb: 3, width: '100%' }}>
+    <Box sx={{ mb: 3, width: '100%', ...sx }}>
       {label && (
         <Typography
           variant="body2"

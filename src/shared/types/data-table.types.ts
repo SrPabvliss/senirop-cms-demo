@@ -1,3 +1,5 @@
+import type { SxProps, Theme } from '@mui/material'
+
 /**
  * Add to have an id to the data table rows
  */
@@ -26,6 +28,10 @@ export interface DataTableProps<T extends BaseDataRow> {
   onRowClick?: (row: T, index: number) => void
   pagination?: boolean
   emptyMessage?: string
+  headerSx?: SxProps<Theme>
+  bodySx?: SxProps<Theme>
+  paginationSx?: SxProps<Theme>
+  sx?: SxProps<Theme>
 }
 
 /**
@@ -33,6 +39,7 @@ export interface DataTableProps<T extends BaseDataRow> {
  */
 export interface DataTableHeadProps<T> {
   columns: Column<T>[]
+  sx?: SxProps<Theme>
 }
 
 /**
@@ -44,6 +51,7 @@ export interface DataTableBodyProps<T> {
   loading: boolean
   emptyMessage?: string
   onRowClick?: (row: T, index: number) => void
+  sx?: SxProps<Theme>
 }
 
 /**
@@ -56,4 +64,5 @@ export interface DataTablePaginationProps {
   page: number
   onPageChange: (page: number) => void
   onRowsPerPageChange: (rowsPerPage: number) => void
+  sx?: SxProps<Theme>
 }

@@ -1,4 +1,4 @@
-import { useTheme } from '@mui/material/styles'
+import { useTheme, type SxProps, type Theme } from '@mui/material/styles'
 import { useFormContext, Controller } from 'react-hook-form'
 import { Box, Typography, TextField } from '@mui/material'
 import { rhfDateInputStyles } from '@/shared/constants/rhf-components-styles'
@@ -8,6 +8,7 @@ interface RHFDateInputProps {
   label?: string
   disabled?: boolean
   required?: boolean
+  sx?: SxProps<Theme>
 }
 
 /**
@@ -22,6 +23,7 @@ const RHFDateInput: React.FC<RHFDateInputProps> = ({
   label,
   disabled = false,
   required = false,
+  sx,
 }) => {
   const theme = useTheme()
 
@@ -47,7 +49,7 @@ const RHFDateInput: React.FC<RHFDateInputProps> = ({
   }
 
   return (
-    <Box sx={{ mb: 3, width: '100%' }}>
+    <Box sx={{ mb: 3, width: '100%', ...sx }}>
       {label && (
         <Typography
           variant="body2"

@@ -6,7 +6,7 @@ import {
   Button,
   Typography,
 } from '@mui/material'
-import { useTheme } from '@mui/material/styles'
+import { useTheme, type SxProps, type Theme } from '@mui/material/styles'
 
 interface ConfirmationDialogProps {
   isOpen: boolean
@@ -17,6 +17,7 @@ interface ConfirmationDialogProps {
   confirmText?: string
   cancelText?: string
   severity?: 'warning' | 'error' | 'info'
+  sx?: SxProps<Theme>
 }
 
 /**
@@ -32,6 +33,7 @@ export const ConfirmationDialog = ({
   confirmText = 'DELETE',
   cancelText = 'CANCEL',
   severity = 'warning',
+  sx,
 }: ConfirmationDialogProps) => {
   const theme = useTheme()
 
@@ -59,6 +61,7 @@ export const ConfirmationDialog = ({
         sx: {
           borderRadius: 2,
           p: 1,
+          ...sx,
         },
       }}
     >

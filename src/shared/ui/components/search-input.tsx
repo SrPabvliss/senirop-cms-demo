@@ -15,6 +15,7 @@ export const SearchInput = ({
   fullWidth = true,
   size = 'small',
   variant = 'outlined',
+  sx,
 }: SearchInputProps) => {
   const { value, onChange } = useSearchInput({
     value: controlledValue,
@@ -43,6 +44,7 @@ export const SearchInput = ({
         '& .MuiOutlinedInput-root': {
           backgroundColor: 'background.paper',
         },
+        ...sx,
       }}
     />
   )

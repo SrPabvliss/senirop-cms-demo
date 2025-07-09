@@ -1,11 +1,12 @@
 import React from 'react'
 import { Drawer, Box } from '@mui/material'
-import { useTheme } from '@mui/material/styles'
+import { useTheme, type SxProps, type Theme } from '@mui/material/styles'
 
 interface FormDrawerProps {
   isOpen: boolean
   onClose: () => void
   children: React.ReactNode
+  sx?: SxProps<Theme>
 }
 
 /**
@@ -16,6 +17,7 @@ export const FormDrawer: React.FC<FormDrawerProps> = ({
   isOpen,
   onClose,
   children,
+  sx,
 }) => {
   const theme = useTheme()
 
@@ -33,6 +35,7 @@ export const FormDrawer: React.FC<FormDrawerProps> = ({
             borderRadius: `${theme.layout.formDrawer.borderRadius}px 0 0 ${theme.layout.formDrawer.borderRadius}px`,
             boxShadow: `${theme.layout.formDrawer.shadow.x}px ${theme.layout.formDrawer.shadow.y}px ${theme.layout.formDrawer.shadow.blur}px ${theme.layout.formDrawer.shadow.spread}px ${theme.palette.formDrawer.shadow}`,
             height: '100vh',
+            ...sx,
           },
         },
       }}
