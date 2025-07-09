@@ -82,7 +82,7 @@ describe('Article Store', () => {
 
     expect(articles).toHaveLength(testArticles.length + 1)
 
-    const addedArticle = articles[articles.length - 1]
+    const addedArticle = articles[0]
     expect(addedArticle.headline).toBe(newArticle.headline)
     expect(addedArticle.id).toBeDefined()
     expect(typeof addedArticle.id).toBe('string')

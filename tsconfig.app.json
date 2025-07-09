@@ -27,5 +27,5 @@
       "@mock/*": ["./src/core/mock/*"]
     }
   },
-  "include": ["src"]
+  "include": ["src", "tests/__unit__", "tests/e2e"]
 }
