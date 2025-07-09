@@ -54,7 +54,18 @@ export function DataTableBody<T extends BaseDataRow>({
         <TableRow
           key={row.id}
           hover={!!onRowClick}
-          onClick={() => onRowClick?.(row, index)}
+          onClick={(event) => {
+            const target = event.target as HTMLElement
+            const isRowOrCell =
+              target.tagName === 'TD' ||
+              target.tagName === 'TR' ||
+              target.closest('td') !== null ||
+              target.closest('tr') === event.currentTarget
+
+            if (isRowOrCell && onRowClick) {
+              onRowClick(row, index)
+            }
+          }}
           sx={{
             cursor: onRowClick ? 'pointer' : 'default',
             '&:hover': onRowClick
