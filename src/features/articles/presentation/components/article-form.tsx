@@ -19,14 +19,23 @@ export const ArticleForm = ({
   const theme = useTheme()
   const isReadOnly = mode === FormMode.VIEW
 
-  const { methods, onSubmit, isSubmitting, isValid, getButtonText, getTitle } =
-    useArticleForm({
-      mode,
-      article,
-      onClose,
-      onCreateArticle,
-      onUpdateArticle,
-    })
+  const {
+    methods,
+    onSubmit,
+    isSubmitting,
+    isValid,
+    getButtonText,
+    getTitle,
+    hasChanges,
+  } = useArticleForm({
+    mode,
+    article,
+    onClose,
+    onCreateArticle,
+    onUpdateArticle,
+  })
+
+  const isDisabled = !isValid || isSubmitting || !hasChanges
 
   return (
     <FormProvider {...methods}>
@@ -55,67 +64,63 @@ export const ArticleForm = ({
         </Box>
       </Box>
 
-      <Box sx={{ display: 'flex', flexDirection: 'column', height: '100%' }}>
-        <form onSubmit={onSubmit} style={{ height: '100%' }}>
-          <Box sx={{ flex: 1 }}>
-            <RHFInput
-              name="headline"
-              label="Headline"
-              placeholder="Enter article headline"
-              disabled={isReadOnly}
-              required
-            />
+      <form onSubmit={onSubmit}>
+        <Box sx={{ flex: 1 }}>
+          <RHFInput
+            name="headline"
+            label="Headline"
+            placeholder="Enter article headline"
+            disabled={isReadOnly}
+            required
+          />
 
-            <RHFInput
-              name="author"
-              label="Author"
-              placeholder="Enter author name"
-              disabled={isReadOnly}
-              required
-            />
+          <RHFInput
+            name="author"
+            label="Author"
+            placeholder="Enter author name"
+            disabled={isReadOnly}
+            required
+          />
 
-            <RHFInput
-              name="body"
-              label="Body"
-              placeholder="Enter article content"
-              disabled={isReadOnly}
-              multiline
-              rows={6}
-              required
-            />
+          <RHFInput
+            name="body"
+            label="Body"
+            placeholder="Enter article content"
+            disabled={isReadOnly}
+            multiline
+            rows={6}
+            required
+          />
 
-            <RHFDateInput
-              name="publicationDate"
-              label="Publish Date"
-              disabled={isReadOnly}
-              required
-            />
+          <RHFDateInput
+            name="publicationDate"
+            label="Publish Date"
+            disabled={isReadOnly}
+            required
+          />
 
-            <RHFSwitch name="published" label="Publish" />
+          <RHFSwitch name="published" label="Publish" />
+        </Box>
+
+        <Box sx={{ paddingTop: '16px' }}>
+          <Box sx={{ display: 'flex', gap: 2, justifyContent: 'flex-end' }}>
+            <Button
+              variant="contained"
+              onClick={onSubmit}
+              disabled={isDisabled}
+              sx={{
+                textTransform: 'none',
+                backgroundColor: isDisabled ? '#9ca3af' : '#6366f1',
+                '&:hover': {
+                  backgroundColor: isDisabled ? '#9ca3af' : '#5856eb',
+                },
+              }}
+            >
+              {isSubmitting ? 'Loading...' : getButtonText()}
+            </Button>
           </Box>
-
-          <Box>
-            <Box sx={{ display: 'flex', gap: 2, justifyContent: 'flex-end' }}>
-              <Button
-                variant="contained"
-                onClick={onSubmit}
-                disabled={!isValid || isSubmitting}
-                sx={{
-                  textTransform: 'none',
-                  backgroundColor:
-                    !isValid || isSubmitting ? '#9ca3af' : '#6366f1',
-                  '&:hover': {
-                    backgroundColor:
-                      !isValid || isSubmitting ? '#9ca3af' : '#5856eb',
-                  },
-                }}
-              >
-                {isSubmitting ? 'Loading...' : getButtonText()}
-              </Button>
-            </Box>
-          </Box>
-        </form>
-      </Box>
+        </Box>
+      </form>
     </FormProvider>
   )
 }

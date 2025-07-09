@@ -42,7 +42,7 @@ export function useArticleForm({
   const {
     handleSubmit,
     reset,
-    formState: { isSubmitting, isValid },
+    formState: { isSubmitting, isValid, isDirty },
   } = methods
 
   /**
@@ -99,5 +99,6 @@ export function useArticleForm({
     handleButtonClick,
     handleCancel,
     onClose,
+    hasChanges: isDirty,
   }
 }

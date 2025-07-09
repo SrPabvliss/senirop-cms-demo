@@ -34,7 +34,7 @@ export const useArticleStore = create<IArticleStore>()(
        */
       addArticle: (article) => {
         set((state) => ({
-          articles: [...(state.articles || []), { ...article, id: uuidv4() }],
+          articles: [{ ...article, id: uuidv4() }, ...(state.articles || [])],
         }))
       },
       updateArticle: (id, article) =>

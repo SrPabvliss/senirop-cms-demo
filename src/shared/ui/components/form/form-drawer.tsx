@@ -32,6 +32,7 @@ export const FormDrawer: React.FC<FormDrawerProps> = ({
             border: `1px solid ${theme.palette.formDrawer.border}`,
             borderRadius: `${theme.layout.formDrawer.borderRadius}px 0 0 ${theme.layout.formDrawer.borderRadius}px`,
             boxShadow: `${theme.layout.formDrawer.shadow.x}px ${theme.layout.formDrawer.shadow.y}px ${theme.layout.formDrawer.shadow.blur}px ${theme.layout.formDrawer.shadow.spread}px ${theme.palette.formDrawer.shadow}`,
+            height: '100vh',
           },
         },
       }}
@@ -39,7 +40,7 @@ export const FormDrawer: React.FC<FormDrawerProps> = ({
       <Box
         sx={{
           flex: 1,
-          overflow: 'hidden',
+          overflow: 'auto',
           padding: `${theme.layout.formDrawer.padding.main}px`,
         }}
       >

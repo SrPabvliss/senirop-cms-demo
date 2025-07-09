@@ -41,7 +41,11 @@ export const ArticleListContainer = () => {
         />
       </FormDrawer>
 
-      <SnackbarComponent {...snackbarProps} onClose={close} />
+      <SnackbarComponent
+        {...snackbarProps}
+        key={snackbarProps.open ? 'open' : 'closed'}
+        onClose={close}
+      />
 
       <ConfirmationDialog
         {...confirmationDialog}
