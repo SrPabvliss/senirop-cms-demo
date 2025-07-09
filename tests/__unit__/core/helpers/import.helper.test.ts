@@ -1,4 +1,4 @@
-import { describe, expect, it } from 'vitest'
+import { describe, expect, it, vi, beforeEach, afterEach } from 'vitest'
 import {
   ImportEntity,
   ImportHelper,
@@ -8,15 +8,38 @@ import type { IArticle } from '@/features/articles/data/types/article.interface'
 import testArticles from '@mock/articles/articles.test.json'
 import developmentArticles from '@mock/articles/articles.development.json'
 import productionArticles from '@mock/articles/articles.production.json'
+import { AppEnvironment } from '@/core/config/app-config'
+
+vi.mock('@/core/config/app-config', () => ({
+  AppEnvironment: {
+    DEVELOPMENT: 'development',
+    TEST: 'test',
+    PRODUCTION: 'production',
+  },
+  getDataEnvironment: vi.fn(() => 'development'),
+}))
 
 /**
  * Import helper should be tested as it is the base for the data import in the app
  */
 
 describe('Import Helper', () => {
+  beforeEach(() => {
+    vi.clearAllMocks()
+  })
+
+  afterEach(() => {
+    vi.restoreAllMocks()
+  })
+
   it('should return a function that imports data', () => {
     const importer = ImportHelper.getImporter<IArticle[]>(ImportEntity.ARTICLES)
     expect(typeof importer).toBe('function')
+  })
+
+  it('should return the current environment', () => {
+    const environment = ImportHelper.getCurrentEnvironment()
+    expect(typeof environment).toBe('string')
   })
 
   describe('Environment-based imports', () => {
@@ -24,7 +47,9 @@ describe('Import Helper', () => {
 
     describe('Test environment', () => {
       it('should return the correct data on importer execution', async () => {
-        ImportHelper.setEnvironment('test')
+        const { getDataEnvironment } = await import('@/core/config/app-config')
+        vi.mocked(getDataEnvironment).mockReturnValue(AppEnvironment.TEST)
+
         importer = ImportHelper.getImporter<IArticle[]>(ImportEntity.ARTICLES)
         const data = await importer()
         expect(data.default).toEqual(testArticles)
@@ -33,7 +58,11 @@ describe('Import Helper', () => {
 
     describe('Development environment', () => {
       it('should return the correct data on importer execution', async () => {
-        ImportHelper.setEnvironment('development')
+        const { getDataEnvironment } = await import('@/core/config/app-config')
+        vi.mocked(getDataEnvironment).mockReturnValue(
+          AppEnvironment.DEVELOPMENT
+        )
+
         importer = ImportHelper.getImporter<IArticle[]>(ImportEntity.ARTICLES)
         const data = await importer()
         expect(data.default).toEqual(developmentArticles)
@@ -42,7 +71,9 @@ describe('Import Helper', () => {
 
     describe('Production environment', () => {
       it('should return the correct data on importer execution', async () => {
-        ImportHelper.setEnvironment('production')
+        const { getDataEnvironment } = await import('@/core/config/app-config')
+        vi.mocked(getDataEnvironment).mockReturnValue(AppEnvironment.PRODUCTION)
+
         importer = ImportHelper.getImporter<IArticle[]>(ImportEntity.ARTICLES)
         const data = await importer()
         expect(data.default).toEqual(productionArticles)
@@ -51,7 +82,9 @@ describe('Import Helper', () => {
 
     describe('Invalid environment', () => {
       it('should fallback to development environment', async () => {
-        ImportHelper.setEnvironment('invalid')
+        const { getDataEnvironment } = await import('@/core/config/app-config')
+        vi.mocked(getDataEnvironment).mockReturnValue('invalid' as any)
+
         importer = ImportHelper.getImporter<IArticle[]>(ImportEntity.ARTICLES)
         const data = await importer()
         expect(data.default).toEqual(developmentArticles)

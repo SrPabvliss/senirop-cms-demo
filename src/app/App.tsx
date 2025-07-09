@@ -1,14 +1,12 @@
 import { BrowserRouter as Router } from 'react-router'
 import { ThemeProvider } from '@/core/providers/theme-provider'
 import { AppRoutes } from './routes/routes'
-
-const basename =
-  import.meta.env.MODE === 'production' ? '/senirop-cms-demo' : '/'
+import { appConfig } from '@/core/config/app-config'
 
 function App() {
   return (
     <ThemeProvider>
-      <Router basename={basename}>
+      <Router basename={appConfig.basePath}>
         <AppRoutes />
       </Router>
     </ThemeProvider>

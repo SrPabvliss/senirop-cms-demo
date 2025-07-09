@@ -3,11 +3,12 @@ import type { IArticleStore } from './article.store.interface'
 import { v4 as uuidv4 } from 'uuid'
 import { ArticlesService } from '@/features/articles/data/services/article.service'
 import { persist, createJSONStorage } from 'zustand/middleware'
+import { getStoreName } from '@/core/config/app-config'
 
 /**
  * Store name for the article store based on the environment
  */
-const STORE_NAME = `article-store-${import.meta.env.MODE}`
+const STORE_NAME = getStoreName('article-store')
 
 /**
  * Store for the articles, persist the articles in the local storage

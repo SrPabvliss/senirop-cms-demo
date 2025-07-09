@@ -1,3 +1,5 @@
+import { AppEnvironment, getDataEnvironment } from '@/core/config/app-config'
+
 /**
  * Type for the import function
  */
@@ -14,8 +16,6 @@ export enum ImportEntity {
  * Helper class to import data from JSON files
  */
 export class ImportHelper {
-  private static environment: string = import.meta.env.MODE || 'development'
-
   private static importers: Record<
     ImportEntity,
     Record<string, ImportFunction>
@@ -39,7 +39,9 @@ export class ImportHelper {
       throw new Error(`No importers found for entity: ${entity}`)
     }
 
-    const importer = entityImporters[this.environment]
+    const environment = getDataEnvironment()
+    const importer = entityImporters[environment]
+
     if (!importer) {
       return entityImporters.development as ImportFunction<T>
     }
@@ -48,11 +50,10 @@ export class ImportHelper {
   }
 
   /**
-   * Set the environment for the import helper
-   * @param environment - The environment to set
-   * Added to allow for testing
+   * Get the current data environment
+   * @returns The current data environment
    */
-  static setEnvironment(environment: string) {
-    this.environment = environment
+  static getCurrentEnvironment(): AppEnvironment {
+    return getDataEnvironment()
   }
 }
