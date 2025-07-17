@@ -8,7 +8,9 @@ import {
 } from '@mui/material'
 import { MoreVert, Edit, Visibility, Delete } from '@mui/icons-material'
 import type { IArticle } from '@/features/articles/data/types/article.interface'
-import { useActionsMenu } from '../hooks/use-actions-menu'
+import { useActionsMenu } from '../../../../shared/hooks/use-actions-menu'
+import LanguageIcon from '@mui/icons-material/Language'
+import { useNavigate } from 'react-router'
 
 interface ArticleActionsMenuProps {
   article: IArticle
@@ -35,7 +37,13 @@ export const ArticleActionsMenu = ({
     handleDelete,
     open,
     trigger,
-  } = useActionsMenu(onEdit, onView, onDelete)
+  } = useActionsMenu<IArticle>(onEdit, onView, onDelete)
+
+  const navigate = useNavigate()
+
+  const handleGoToLiveSite = (article: IArticle) => {
+    navigate(`/articles/${article.id}`)
+  }
 
   return (
     <>
@@ -96,6 +104,15 @@ export const ArticleActionsMenu = ({
           </ListItemIcon>
           <ListItemText>View</ListItemText>
         </MenuItem>
+
+        {article.published && (
+          <MenuItem onClick={() => handleGoToLiveSite(article)}>
+            <ListItemIcon>
+              <LanguageIcon fontSize="small" />
+            </ListItemIcon>
+            <ListItemText>Go to Live site</ListItemText>
+          </MenuItem>
+        )}
 
         <Divider />
 

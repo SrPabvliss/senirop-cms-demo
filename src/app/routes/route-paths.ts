@@ -7,6 +7,7 @@ export const ROUTE_PATHS = {
   DOCUMENTS: '/documents',
   STATISTICS: '/statistics',
   SETTINGS: '/settings',
+  ARTICLE_DETAILS: '/articles/:id',
 } as const
 
 export type RoutePath = (typeof ROUTE_PATHS)[keyof typeof ROUTE_PATHS]

@@ -5,6 +5,7 @@ export interface IArticle {
   author: string
   publicationDate: string
   published: boolean
+  photos: string[]
 }
 
 export interface ICreateArticle extends Omit<IArticle, 'id'> {}

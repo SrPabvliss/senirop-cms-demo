@@ -1,0 +1,50 @@
+[
+  {
+    "id": "dev-001",
+    "name": "Juan",
+    "lastName": "Pérez",
+    "mail": "juan.perez@dev.local",
+    "role": "admin",
+    "isActive": true
+  },
+  {
+    "id": "dev-002",
+    "name": "María",
+    "lastName": "González",
+    "mail": "maria.gonzalez@dev.local",
+    "role": "writer",
+    "isActive": true
+  },
+  {
+    "id": "dev-003",
+    "name": "Carlos",
+    "lastName": "Rodríguez",
+    "mail": "carlos.rodriguez@dev.local",
+    "role": "reader",
+    "isActive": true
+  },
+  {
+    "id": "dev-004",
+    "name": "Ana",
+    "lastName": "Martínez",
+    "mail": "ana.martinez@dev.local",
+    "role": "writer",
+    "isActive": false
+  },
+  {
+    "id": "dev-005",
+    "name": "Luis",
+    "lastName": "García",
+    "mail": "luis.garcia@dev.local",
+    "role": "reader",
+    "isActive": true
+  },
+  {
+    "id": "dev-006",
+    "name": "Elena",
+    "lastName": "López",
+    "mail": "elena.lopez@dev.local",
+    "role": "admin",
+    "isActive": false
+  }
+]

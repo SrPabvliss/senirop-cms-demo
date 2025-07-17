@@ -49,6 +49,8 @@ export const useArticleStore = create<IArticleStore>()(
         set((state) => ({
           articles: state.articles?.filter((a) => a.id !== id) || [],
         })),
+      findArticleById: (id) =>
+        get().articles?.find((a) => a.id === id) || undefined,
     }),
     {
       name: STORE_NAME,

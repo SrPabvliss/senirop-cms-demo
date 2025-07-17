@@ -1,34 +1,33 @@
 import { useState } from 'react'
-import { FormMode } from '../../../../shared/constants/form-modes'
-import type { IArticle } from '../../data/types/article.interface'
+import { FormMode } from '../constants/form-modes'
 
-interface ArticleDrawerState {
+interface DrawerState<T> {
   isOpen: boolean
   mode: FormMode
-  article?: IArticle
+  item?: T
 }
 
 /**
  * Hook to manage the article drawer
  * Handles the 3 modes: CREATE, EDIT, VIEW
  */
-export const useArticleDrawer = () => {
-  const [drawerState, setDrawerState] = useState<ArticleDrawerState>({
+export const useDrawer = <T>() => {
+  const [drawerState, setDrawerState] = useState<DrawerState<T>>({
     isOpen: false,
     mode: FormMode.CREATE,
-    article: undefined,
+    item: undefined,
   })
 
   /**
    * Open the drawer in the specified mode
    * @param mode - Form mode (CREATE, EDIT, VIEW)
-   * @param article - Article to edit/view (optional for CREATE)
+   * @param item - Item to edit/view (optional for CREATE)
    */
-  const openDrawer = (mode: FormMode, article?: IArticle) => {
+  const openDrawer = (mode: FormMode, item?: T) => {
     setDrawerState({
       isOpen: true,
       mode,
-      article,
+      item,
     })
   }
 
@@ -39,7 +38,7 @@ export const useArticleDrawer = () => {
     setDrawerState({
       isOpen: false,
       mode: FormMode.CREATE,
-      article: undefined,
+      item: undefined,
     })
   }
 
@@ -57,7 +56,7 @@ export const useArticleDrawer = () => {
   return {
     isOpen: drawerState.isOpen,
     mode: drawerState.mode,
-    article: drawerState.article,
+    item: drawerState.item,
     openDrawer,
     closeDrawer,
     changeMode,

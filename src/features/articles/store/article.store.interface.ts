@@ -9,6 +9,7 @@ export interface IArticleStore {
   init: () => Promise<void>
   setArticles: (articles: IArticle[]) => void
   addArticle: (article: ICreateArticle) => void
+  findArticleById: (id: string) => IArticle | undefined
   updateArticle: (id: string, article: IUpdateArticle) => void
   deleteArticle: (id: string) => void
   isLoading: boolean

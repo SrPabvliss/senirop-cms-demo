@@ -32,4 +32,5 @@ export const getDefaultFormValues = (article?: IArticle): ArticleSchema => ({
   publicationDate:
     article?.publicationDate || new Date().toISOString().split('T')[0],
   published: article?.published || false,
+  photos: article?.photos || [],
 })

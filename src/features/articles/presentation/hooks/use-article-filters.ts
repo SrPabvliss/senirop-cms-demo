@@ -4,8 +4,8 @@ import type {
   ArticleFilters,
   UseArticleFiltersReturn,
 } from '@/features/articles/data/types/article-filter.interface'
-import { DEFAULT_FILTERS } from '@/features/articles/data/constants/article-default-filters'
 import { ArticleStatus } from '../../data/constants/article-statuses'
+import { ARTICLE_DEFAULT_FILTERS } from '../../data/constants/article-default-filters'
 
 /**
  * Hook to manage article filters and apply them to article data
@@ -13,7 +13,9 @@ import { ArticleStatus } from '../../data/constants/article-statuses'
 export const useArticleFilters = (
   articles: IArticle[]
 ): UseArticleFiltersReturn & { filteredArticles: IArticle[] } => {
-  const [filters, setFilters] = useState<ArticleFilters>(DEFAULT_FILTERS)
+  const [filters, setFilters] = useState<ArticleFilters>(
+    ARTICLE_DEFAULT_FILTERS
+  )
 
   const setSearch = (search: string) => {
     setFilters((prev) => ({ ...prev, search }))
@@ -24,7 +26,7 @@ export const useArticleFilters = (
   }
 
   const clearFilters = () => {
-    setFilters(DEFAULT_FILTERS)
+    setFilters(ARTICLE_DEFAULT_FILTERS)
   }
 
   const hasActiveFilters =

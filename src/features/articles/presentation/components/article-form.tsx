@@ -8,6 +8,8 @@ import RHFInput from '@/shared/ui/components/form/rhf-inputt'
 import RHFDateInput from '@/shared/ui/components/form/rhf-date-input'
 import RHFSwitch from '@/shared/ui/components/form/rhf-switch'
 import { Close } from '@mui/icons-material'
+import RHFUploadInput from '@/shared/ui/components/form/upload-input'
+import { ImagePreview } from './image-preview'
 
 export const ArticleForm = ({
   mode,
@@ -91,6 +93,19 @@ export const ArticleForm = ({
             rows={6}
             required
           />
+
+          {mode === FormMode.EDIT ||
+            (mode === FormMode.CREATE && (
+              <RHFUploadInput
+                name="photos"
+                label="Article Images"
+                disabled={isReadOnly}
+              />
+            ))}
+
+          {mode === FormMode.VIEW && article?.photos && (
+            <ImagePreview photos={article.photos} />
+          )}
 
           <RHFDateInput
             name="publicationDate"

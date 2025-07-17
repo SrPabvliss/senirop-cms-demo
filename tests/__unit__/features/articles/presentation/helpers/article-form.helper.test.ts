@@ -37,6 +37,7 @@ describe('Article Form Helper', () => {
       publicationDate: '2021-01-01',
       published: true,
       id: '1',
+      photos: [],
     }
     const defaultValues = getDefaultFormValues(article)
     expect(defaultValues).toBeDefined()

@@ -6,6 +6,7 @@ export const articleSchema = z.object({
   body: z.string().min(1, 'Body is required'),
   publicationDate: z.string().min(1, 'Publication date is required'),
   published: z.boolean(),
+  photos: z.array(z.string()),
 })
 
 export type ArticleSchema = z.infer<typeof articleSchema>

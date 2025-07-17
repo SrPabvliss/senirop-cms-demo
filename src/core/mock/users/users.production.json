@@ -1,0 +1,34 @@
+[
+  {
+    "id": "prod-001",
+    "name": "Roberto",
+    "lastName": "Fernández",
+    "mail": "roberto.fernandez@empresa.com",
+    "role": "admin",
+    "isActive": true
+  },
+  {
+    "id": "prod-002",
+    "name": "Carmen",
+    "lastName": "Ruiz",
+    "mail": "carmen.ruiz@empresa.com",
+    "role": "writer",
+    "isActive": true
+  },
+  {
+    "id": "prod-003",
+    "name": "Miguel",
+    "lastName": "Sánchez",
+    "mail": "miguel.sanchez@empresa.com",
+    "role": "writer",
+    "isActive": true
+  },
+  {
+    "id": "prod-004",
+    "name": "Isabel",
+    "lastName": "Torres",
+    "mail": "isabel.torres@empresa.com",
+    "role": "reader",
+    "isActive": true
+  }
+]

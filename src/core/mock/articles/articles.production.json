@@ -5,7 +5,8 @@
     "body": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
     "author": "Juan Pablo",
     "publicationDate": "2025-01-01",
-    "published": true
+    "published": true,
+    "photos": []
   },
   {
     "id": "2",
@@ -13,7 +14,8 @@
     "body": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
     "author": "Juan Pablo",
     "publicationDate": "2025-01-01",
-    "published": true
+    "published": true,
+    "photos": []
   },
   {
     "id": "3",
@@ -21,6 +23,7 @@
     "body": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
     "author": "Juan Pablo",
     "publicationDate": "2025-01-01",
-    "published": true
+    "published": true,
+    "photos": []
   }
 ]

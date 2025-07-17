@@ -12,6 +12,7 @@ describe('Article Schema', () => {
       body: 'Test Body',
       publicationDate: '2021-01-01',
       published: true,
+      photos: [],
     })
 
     expect(article).toBeDefined()

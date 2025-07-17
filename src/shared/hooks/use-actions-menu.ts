@@ -1,10 +1,9 @@
 import { useState } from 'react'
-import type { IArticle } from '../../data/types/article.interface'
 
-export const useActionsMenu = (
-  onEdit: (article: IArticle) => void,
-  onView: (article: IArticle) => void,
-  onDelete: (article: IArticle) => void
+export const useActionsMenu = <T>(
+  onEdit: (item: T) => void,
+  onView: (item: T) => void,
+  onDelete: (item: T) => void
 ) => {
   const [trigger, setTrigger] = useState<null | HTMLElement>(null)
   const open = Boolean(trigger)
@@ -19,21 +18,21 @@ export const useActionsMenu = (
     setTrigger(null)
   }
 
-  const handleEdit = (article: IArticle, event?: React.MouseEvent) => {
+  const handleEdit = (item: T, event?: React.MouseEvent) => {
     event?.stopPropagation()
-    onEdit(article)
+    onEdit(item)
     handleClose()
   }
 
-  const handleView = (article: IArticle, event?: React.MouseEvent) => {
+  const handleView = (item: T, event?: React.MouseEvent) => {
     event?.stopPropagation()
-    onView(article)
+    onView(item)
     handleClose()
   }
 
-  const handleDelete = (article: IArticle, event?: React.MouseEvent) => {
+  const handleDelete = (item: T, event?: React.MouseEvent) => {
     event?.stopPropagation()
-    onDelete(article)
+    onDelete(item)
     handleClose()
   }
 

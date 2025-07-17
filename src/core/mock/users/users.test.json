@@ -1,0 +1,42 @@
+[
+  {
+    "id": "test-001",
+    "name": "Test",
+    "lastName": "Admin",
+    "mail": "test.admin@test.com",
+    "role": "admin",
+    "isActive": true
+  },
+  {
+    "id": "test-002",
+    "name": "Test",
+    "lastName": "Writer",
+    "mail": "test.writer@test.com",
+    "role": "writer",
+    "isActive": true
+  },
+  {
+    "id": "test-003",
+    "name": "Test",
+    "lastName": "Reader",
+    "mail": "test.reader@test.com",
+    "role": "reader",
+    "isActive": true
+  },
+  {
+    "id": "test-004",
+    "name": "Inactive",
+    "lastName": "User",
+    "mail": "inactive.user@test.com",
+    "role": "reader",
+    "isActive": false
+  },
+  {
+    "id": "test-005",
+    "name": "Special",
+    "lastName": "Characters",
+    "mail": "special.chars@test.com",
+    "role": "writer",
+    "isActive": true
+  }
+]

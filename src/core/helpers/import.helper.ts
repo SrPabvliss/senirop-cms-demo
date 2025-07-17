@@ -10,6 +10,7 @@ export type ImportFunction<T = any> = () => Promise<{ default: T }>
  */
 export enum ImportEntity {
   ARTICLES = 'articles',
+  USERS = 'users',
 }
 
 /**
@@ -24,6 +25,11 @@ export class ImportHelper {
       development: () => import('@mock/articles/articles.development.json'),
       test: () => import('@mock/articles/articles.test.json'),
       production: () => import('@mock/articles/articles.production.json'),
+    },
+    [ImportEntity.USERS]: {
+      development: () => import('@mock/users/users.development.json'),
+      test: () => import('@mock/users/users.test.json'),
+      production: () => import('@mock/users/users.production.json'),
     },
   }
 
