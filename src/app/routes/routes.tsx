@@ -3,7 +3,7 @@ import { ROUTE_PATHS } from './route-paths'
 import { Dashboard } from '@mui/icons-material'
 import { MainLayout } from '../layout/views/main-layout'
 import { ArticleListContainer } from '@/features/articles/presentation/containers/article-list-container'
-import { UserListContainer } from '@/features/users/presentation/containers/users-list-container'
+// import { UserListContainer } from '@/features/users/presentation/containers/users-list-container'
 import { ArticleDetailViewContainer } from '@/features/articles/presentation/containers/aricle-detail-view-container'
 import { ArticleDetailLayout } from '@/features/articles/presentation/components/article-detail-layout'
 
@@ -15,10 +15,10 @@ export const AppRoutes = () => {
     <Routes>
       <Route path="/" element={<MainLayout />}>
         <Route index element={<ArticleListContainer />} />
-        <Route
+        {/* <Route
           path={ROUTE_PATHS.USER_MANAGEMENT}
           element={<UserListContainer />}
-        />
+        /> */}
         <Route path={ROUTE_PATHS.DOCUMENTS} element={<Dashboard />} />
         <Route path={ROUTE_PATHS.STATISTICS} element={<Dashboard />} />
         <Route path={ROUTE_PATHS.SETTINGS} element={<Dashboard />} />

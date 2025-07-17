@@ -73,6 +73,7 @@ describe('Article Store', () => {
       author: 'Test Author',
       publicationDate: '2025-01-05',
       published: false,
+      photos: [],
     }
 
     store.addArticle(newArticle)
